@@ -1,9 +1,11 @@
-name: Docker Build/Push
+name: Docker Publish
 
 on:
   push:
     branches:
       - 'main'
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
   docker:
@@ -11,7 +13,7 @@ jobs:
     strategy:
       matrix:
         php: ['8.2']
-        unit: ['1.30.0']
+        unit: ['1.30.0', '1.29.1']
     name: PHP ${{ matrix.php }} - Unit ${{ matrix.unit }}
     steps:
       -
